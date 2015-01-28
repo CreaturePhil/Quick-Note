@@ -1,0 +1,19 @@
+{
+  "name": "Quick-Note",
+  "version": "0.1.0",
+  "authors": [
+    "Phil <birkal@outlook.com>"
+  ],
+  "description": "Fast notetaking",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2"
+  }
+}
