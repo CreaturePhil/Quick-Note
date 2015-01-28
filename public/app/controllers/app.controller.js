@@ -2,17 +2,18 @@
   'use strict';
 
   angular
-    .module('notesApp.authController', [])
-    .controller('authController', authController);
+    .module('notesApp.mainController', [])
+    .controller('MainCtrl', MainController);
 
-    authController.$inject = ['$location', 'Auth'];
+    MainController.$inject = ['$location', 'Auth'];
 
-    function authController() {
+    function MainController($location, Auth) {
       var vm = this;
 
       vm.signup = authenticate('/signup');
       vm.login = authenticate('/login');
       vm.logout = logout;
+      vm.isLoggedIn = Auth.isLoggedIn;
 
       function authenticate(url) {
         return function() {

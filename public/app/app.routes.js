@@ -17,14 +17,10 @@
       })
       .when('/signup', {
         templateUrl: 'app/views/signup.html',
-        controller: 'authController',
-        controllerAs: 'signup',
         restrictLogin: true
       })
       .when('/login', {
         templateUrl: 'app/views/login.html',
-        controller: 'authController',
-        controllerAs: 'login',
         restrictLogin: true
       })
       .when('/404', {
