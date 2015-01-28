@@ -10,22 +10,28 @@
     function MainController($location, Auth) {
       var vm = this;
 
-      vm.signup = authenticate('/signup');
-      vm.login = authenticate('/login');
+      vm.signup = signup;
+      vm.login = '';
       vm.logout = logout;
       vm.isLoggedIn = Auth.isLoggedIn;
 
       function authenticate(url) {
-        return function() {
-          Auth
-          .authenticate(url, vm.data.username, vm.data.password)
-          .then(function(data) {
-            if (data.sucess) {
-              $location.path('/');
-            } else {
-              vm.error = data.message;
-            }
-          });
+        Auth
+        .authenticate(url, vm.data.username, vm.data.password)
+        .then(function(data) {
+          if (data.sucess) {
+            $location.path('/');
+          } else {
+            vm.error = data.message;
+          }
+        });
+      }
+
+      function signup(isValid) {
+        if (vm.data.password === vm.data.confirmPassword) {
+          alert('it work !') 
+        } else {
+          vm.error = 'Passwords do not match.';
         }
       }
 
