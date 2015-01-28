@@ -1,9 +1,55 @@
+var chalk = require('chalk');
+var errorhandler = require('errorhandler');
 var express = require('express');
+var morgan = require('morgan');
+
+var config = require('./config/config');
+var routes = require('./config/routes');
 
 var app = express();
 
-app.get('/', function(req, res) {
-  res.send('Quick Note');
+/**
+ * App configuration
+ */
+
+if (app.get('env') === 'development') {
+  app.use(morgan('dev'));
+}
+
+app.set('port', config.port);
+
+// routes setup
+app.use('/', routes);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Page Not Found');
+  err.status = 404;
+  next(err);
 });
 
-app.listen(process.env.PORT || 3000);
+/**
+ * Error handlers
+ */
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(errorhandler());
+}
+
+// production error handler
+// no stacktraces leaked to user
+if (app.get('env') === 'production') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    // TODO
+    res.sendFile('');
+  });
+}
+
+var server = app.listen(app.get('port'), function() {
+  var env = '\n[' + chalk.green(app.get('env')) + ']';
+  var port = chalk.magenta(server.address().port);
+  console.log(env + ' Listening on port ' + port + '...\n');
+});
