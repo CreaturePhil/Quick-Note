@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('notesApp', ['notesApp.routes', 'notesApp.authService'])
+    .module('notesApp', ['notesApp.routes', 'notesApp.authService', 'notesApp.authController'])
     .config(addAuthInterceptor)
     .run(checkAuthentication);
 
@@ -18,6 +18,8 @@
         if (!Auth.isLoggedIn() && next.loginRequired) {
           $rootScope.savedLocation = $location.url();
           $location.path('/login');
+        } else if (Auth.isLoggedIn() && next.restrictLogin) {
+          $location.path('/');
         }
       });
     }
