@@ -2,6 +2,7 @@ var chalk = require('chalk');
 var errorhandler = require('errorhandler');
 var express = require('express');
 var morgan = require('morgan');
+var path = require('path');
 
 var config = require('./config/config');
 var routes = require('./config/routes');
@@ -17,6 +18,8 @@ if (app.get('env') === 'development') {
 }
 
 app.set('port', config.port);
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 // routes setup
 app.use('/', routes);
@@ -43,8 +46,7 @@ if (app.get('env') === 'development') {
 if (app.get('env') === 'production') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    // TODO
-    res.sendFile('');
+    res.sendFile(path.join(__dirname, 'public/app/views/error.html'));
   });
 }
 
