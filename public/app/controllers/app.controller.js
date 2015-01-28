@@ -11,7 +11,7 @@
       var vm = this;
 
       vm.signup = signup;
-      vm.login = '';
+      vm.login = login;
       vm.logout = logout;
       vm.isLoggedIn = Auth.isLoggedIn;
 
@@ -28,10 +28,16 @@
       }
 
       function signup(isValid) {
-        if (vm.data.password === vm.data.confirmPassword) {
-          alert('it work !') 
+        if (isValid && vm.data.password === vm.data.confirmPassword) {
+          alert('it work !');
         } else {
           vm.error = 'Passwords do not match.';
+        }
+      }
+
+      function login(isValid) {
+        if (isValid) {
+          alert('it work!');
         }
       }
 
