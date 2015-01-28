@@ -1,0 +1,25 @@
+{
+  "name": "Quick-Note",
+  "version": "0.1.0",
+  "description": "Fast notetaking",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CreaturePhil/Quick-Note.git"
+  },
+  "author": "Philip La",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CreaturePhil/Quick-Note/issues"
+  },
+  "homepage": "https://github.com/CreaturePhil/Quick-Note",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "dependencies": {
+    "express": "^4.11.1"
+  }
+}
