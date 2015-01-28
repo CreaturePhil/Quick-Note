@@ -1,0 +1,2 @@
+# Quick-Note
+Fast notetaking
