@@ -1,7 +1,8 @@
 (function() {
   'use strict'; 
 
-  angular.module('notesApp.routes', ['ngRoute'])
+  angular
+    .module('notesApp.routes', ['ngRoute'])
     .config(routeConfiguration);
 
   routeConfiguration.$inject = ['$routeProvider', '$locationProvider'];
@@ -20,5 +21,5 @@
       .otherwise('/404');
 
     $locationProvider.html5Mode(true);
-  };
+  }
 })();
