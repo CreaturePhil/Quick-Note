@@ -1,1 +1,5 @@
-angular.module('notesApp', ['notesApp.routes']);
+(function() {
+  'use strict';
+  
+  angular.module('notesApp', ['notesApp.routes']);
+})();

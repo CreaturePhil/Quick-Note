@@ -1,17 +1,24 @@
-angular.module('notesApp.routes', ['ngRoute'])
+(function() {
+  'use strict'; 
 
-.config(function($routeProvider, $locationProvider) {
-  $routeProvider
-    .when('/', {
-      templateUrl: 'app/views/home.html'
-    })
-    .when('/about', {
-      templateUrl: 'app/views/about.html'
-    })
-    .when('/404', {
-      templateUrl: 'app/views/404.html'
-    })
-    .otherwise('/404');
+  angular.module('notesApp.routes', ['ngRoute'])
+    .config(routeConfiguration);
 
-  $locationProvider.html5Mode(true);
-});
+  routeConfiguration.$inject = ['$routeProvider', '$locationProvider'];
+
+  function routeConfiguration($routeProvider, $locationProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'app/views/home.html'
+      })
+      .when('/about', {
+        templateUrl: 'app/views/about.html'
+      })
+      .when('/404', {
+        templateUrl: 'app/views/404.html'
+      })
+      .otherwise('/404');
+
+    $locationProvider.html5Mode(true);
+  };
+})();
