@@ -14,6 +14,7 @@
       vm.login = login;
       vm.logout = logout;
       vm.isLoggedIn = Auth.isLoggedIn;
+      vm.clearError = clearError;
 
       function authenticate(url) {
         Auth
@@ -44,6 +45,10 @@
       function logout() {
         Auth.logout();
         $location.path('/');
+      }
+
+      function clearError() {
+        vm.error = '';
       }
     }
 })();
