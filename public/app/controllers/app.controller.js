@@ -17,10 +17,12 @@
       vm.clearError = clearError;
 
       function authenticate(url) {
+        vm.loading = true;
         Auth
         .authenticate(url, vm.data.username, vm.data.password)
         .then(function(data) {
-          if (data.sucess) {
+          vm.loading = false;
+          if (data.success) {
             $location.path('/');
           } else {
             vm.error = data.message;
@@ -30,7 +32,7 @@
 
       function signup(isValid) {
         if (isValid && vm.data.password === vm.data.confirmPassword) {
-          alert('it work !');
+          authenticate('signup');
         } else {
           vm.error = 'Passwords do not match.';
         }
@@ -38,7 +40,7 @@
 
       function login(isValid) {
         if (isValid) {
-          alert('it work!');
+          authenticate('login');
         }
       }
 

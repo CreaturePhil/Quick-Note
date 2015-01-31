@@ -14,7 +14,7 @@
     }
 
     function checkAuthentication($rootScope, $location, Auth) {
-      $rootScope.$on(function(event, next) {
+      $rootScope.$on('$routeChangeStart', function(event, next) {
         if (!Auth.isLoggedIn() && next.loginRequired) {
           $rootScope.savedLocation = $location.url();
           $location.path('/login');

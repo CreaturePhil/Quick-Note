@@ -37,9 +37,9 @@
       function authenticate(url, username, password) {
         return $http
         .post('/' + url, { username: username, password: password })
-        .then(function(data) {
-          AuthToken.setToken(data.token);
-          return data;
+        .then(function(res) {
+          AuthToken.setToken(res.data.token);
+          return res.data;
         });
       }
 
@@ -48,7 +48,7 @@
       }
 
       function isLoggedIn() {
-        if (!AuthToken.getToken()) return false;
+        if (AuthToken.getToken() === 'undefined') return false;
         return true;
       }
     }

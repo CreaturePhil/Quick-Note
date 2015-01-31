@@ -44,10 +44,10 @@
                ng-required="true">
       </div>
       <div class="form-group">
-        <input type="submit"
-               class="btn btn-primary center-block"
-               value="Create account"
-               ng-disabled="signupForm.$invalid">
+        <button type="submit" class="btn btn-primary center-block" ng-disabled="signupForm.$invalid">
+          <span ng-show="vm.loading">Loading...</span>
+          <span ng-hide="vm.loading">Create account</span>
+        </button>
       </div>
     </form>
     <hr>
