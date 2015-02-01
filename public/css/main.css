@@ -1,0 +1,8 @@
+.qn-bg, 
+.qn-bg select {
+  background-color: #F8F8F8;
+}
+
+.notearea {
+  overflow-y: hidden;
+}

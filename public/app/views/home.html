@@ -1,1 +1,28 @@
-<h1>Quick Note!</h1>
+<div>
+  <form>
+    <div class="form-group">
+      <textarea class="form-control qn-bg" 
+                rows="20"
+                autofocus="autofocus"
+                name="note"
+                ng-model="vm.data.note"
+                ng-required="true"></textarea>
+    </div>
+    <div class="form-inline row text-center">
+      <div class="col-md-6">
+        <label>Title:</label>
+        <input type="text" class="form-control qn-bg" placeholder="Untitled" ng-model="vm.data.title">
+      </div class="form-group col-md-6">
+        <label>Visibility:</label>
+        <select class="form-group form-control qn-bg"
+                ng-init="vm.data.visibility = 'Public'"
+                ng-model="vm.data.visibility">
+          <option>Public</option>
+          <option>Unlisted</option>
+          <option ng-show="vm.isLoggedIn()">Private</option>
+          <option disabled ng-hide="vm.isLoggedIn()">Private (Users only)</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
