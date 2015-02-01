@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('notesApp', ['notesApp.routes', 'notesApp.authService', 'notesApp.mainController', 'notesApp.formDirective'])
+    .module('notesApp', ['notesApp.routes', 'notesApp.authService', 'notesApp.mainController', 'notesApp.notesController', 'notesApp.formDirective'])
     .config(addAuthInterceptor)
     .run(checkAuthentication);
 

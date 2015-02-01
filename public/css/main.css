@@ -4,5 +4,6 @@
 }
 
 .notearea {
+  resize: none;
   overflow-y: hidden;
 }

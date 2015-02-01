@@ -10,7 +10,9 @@
   function routeConfiguration($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'app/views/home.html'
+        templateUrl: 'app/views/home.html',
+        controller: 'NotesController',
+        controllerAs: 'notes'
       })
       .when('/about', {
         templateUrl: 'app/views/about.html'
