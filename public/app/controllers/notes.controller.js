@@ -16,13 +16,13 @@
     vm.clearError = clearError;
 
     function addNote(isValid) {
-      if (isValid) {
+      if (isValid && vm.data.title.indexOf('@') < 0) {
         $log.log(vm.data);
         NoteService
           .new({
             title: vm.data.title || 'Untitled',
             visibility: vm.data.visibility,
-            note: vm.data.note
+            content: vm.data.note
           })
         // .then(function(data) {
         //   vm.loading = false;
