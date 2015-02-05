@@ -41,6 +41,8 @@
     function login(isValid) {
       if (isValid) {
         authenticate('login');
+      } else {
+        vm.error = 'Something bad happen!';
       }
     }
 
