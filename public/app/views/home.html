@@ -39,3 +39,8 @@
     </div>
   </form>
 </div>
+<div ng-repeat="note in notes.notes">
+  <h1 ng-bind="note.title"></h1>
+  <h2 ng-bind="note.author"></h2>
+  <pre ng-bind="note.content"></pre>
+</div>

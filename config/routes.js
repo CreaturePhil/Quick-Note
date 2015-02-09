@@ -13,6 +13,7 @@ router.route('/login')
   .post(userController.login);
 
 router.route('/api/note')
+  .get(noteController.index)
   .post(noteController.add);
 
 router.route('*')

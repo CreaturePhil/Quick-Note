@@ -12,8 +12,23 @@
 
     $('.notearea').autosize();
 
+    vm.notes = [];
     vm.addNote = addNote;
     vm.clearError = clearError;
+
+    var fetchNotes = function() {
+      Note
+        .index()
+        .then(function(data) {
+           if (data.success) {
+             vm.notes = data.notes;
+           } else {
+             vm.error = data.message;
+           }
+        });
+    };
+
+    fetchNotes();
 
     function addNote(isValid) {
       if (isValid) {

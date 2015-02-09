@@ -9,8 +9,17 @@
 
   function Note($http) {
     return {
+      index: index,
       add: add 
     };
+
+    function index() {
+      return $http
+        .get('/api/note')
+        .then(function(res) {
+          return res.data;
+        });
+    }
 
     function add(model) {
       return $http
