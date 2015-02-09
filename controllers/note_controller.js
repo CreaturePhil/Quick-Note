@@ -7,6 +7,7 @@ module.exports = {
     var token = crypto.randomBytes(4).toString('hex');
     var note = new Note({
       nid: token,
+      title: req.body.title,
       content: req.body.content,
       author: 'Anonymous',
       visibility: req.body.visibility
