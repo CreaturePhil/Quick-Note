@@ -5,9 +5,9 @@
     .module('notesApp.notesController', [])
     .controller('NotesController', NotesController);
 
-  NotesController.$inject = ['$log'];
+  NotesController.$inject = ['Note'];
 
-  function NotesController($log) {
+  function NotesController(Note) {
     var vm = this;
 
     $('.notearea').autosize();
@@ -16,22 +16,22 @@
     vm.clearError = clearError;
 
     function addNote(isValid) {
-      if (isValid && vm.data.title.indexOf('@') < 0) {
-        $log.log(vm.data);
-        NoteService
-          .new({
+      if (isValid) {
+        Note
+          .add({
             title: vm.data.title || 'Untitled',
             visibility: vm.data.visibility,
             content: vm.data.note
           })
-        // .then(function(data) {
-        //   vm.loading = false;
-        //   if (data.success) {
-        //     $location.path('/');
-        //   } else {
-        //     vm.error = data.message;
-        //   }
-        // });
+         .then(function(data) {
+           vm.loading = false;
+           if (data.success) {
+             vm.data.title = '';
+             vm.data.note = '';
+           } else {
+             vm.error = data.message;
+           }
+         });
       } else {
         vm.error = 'Something bad happen!';
       }

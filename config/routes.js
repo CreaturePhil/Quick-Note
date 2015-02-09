@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 
 var userController = require('../controllers/user_controller');
+var noteController = require('../controllers/note_controller');
 
 var router = express.Router();
 
@@ -10,6 +11,9 @@ router.route('/signup')
 
 router.route('/login')
   .post(userController.login);
+
+router.route('/api/note')
+  .post(noteController.add);
 
 router.route('*')
   .get(function(req, res) {
