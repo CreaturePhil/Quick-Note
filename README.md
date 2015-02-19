@@ -1,3 +1,3 @@
-# [Quick-Note](http://quicknote.mod.bz/)
+# Quick Note
 
 Fast notetaking
